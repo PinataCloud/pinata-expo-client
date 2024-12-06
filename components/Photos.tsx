@@ -40,15 +40,12 @@ export function Photos() {
 		try {
 			setLoading(true);
 			const token = await getToken();
-			const request = await fetch(
-				"https://steve-macbook-pro-1.dachshund-deneb.ts.net/files",
-				{
-					method: "GET",
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
+			const request = await fetch(`${serverUrl}/files`, {
+				method: "GET",
+				headers: {
+					Authorization: `Bearer ${token}`,
 				},
-			);
+			});
 			if (!request.ok) {
 				throw new Error(`Failed to fetch files: ${request.status}`);
 			}
@@ -111,16 +108,13 @@ export function Photos() {
 
 			const token = await getToken();
 
-			const response = await fetch(
-				"https://steve-macbook-pro-1.dachshund-deneb.ts.net/files",
-				{
-					method: "POST",
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-					body: formData,
+			const response = await fetch(`${serverUrl}/files`, {
+				method: "POST",
+				headers: {
+					Authorization: `Bearer ${token}`,
 				},
-			);
+				body: formData,
+			});
 
 			if (!response.ok) {
 				throw new Error(`Upload failed with status ${response.status}`);
