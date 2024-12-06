@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "expo-test",
-    "slug": "expo-test",
+    "slug": "pinata-photo-expo",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -9,7 +9,8 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "cloud.pinata.pinata-photo-expo"
     },
     "android": {
       "adaptiveIcon": {
@@ -36,6 +37,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "46dca745-4bb5-4f79-90ce-ceb0bc14460e"
+      }
+    },
+    "owner": "stevedylandev"
   }
 }
