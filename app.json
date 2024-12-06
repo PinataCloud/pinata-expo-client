@@ -52,6 +52,18 @@
 		},
 		"updates": {
 			"url": "https://u.expo.dev/46dca745-4bb5-4f79-90ce-ceb0bc14460e"
+		},
+		"build": {
+			"production": {
+				"channel": "production"
+			},
+			"staging": {
+				"channel": "staging"
+			},
+			"preview": {
+				"channel": "preview",
+				"distribution": "internal"
+			}
 		}
 	}
 }
