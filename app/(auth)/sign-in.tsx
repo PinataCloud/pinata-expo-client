@@ -86,7 +86,7 @@ export default function Page() {
 			// and redirect the user
 			if (completeSignIn.status === "complete") {
 				await setActive({ session: completeSignIn.createdSessionId });
-				router.replace("/upload");
+				router.replace("/photos");
 			} else {
 				// If the status is not complete, check why. User may need to
 				// complete further steps.

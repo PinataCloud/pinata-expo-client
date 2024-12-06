@@ -9,7 +9,7 @@ import {
 	Image,
 	ScrollView,
 } from "react-native";
-import { Uploader } from "@/components/Uploader";
+import { Photos } from "@/components/Photos";
 
 export default function Page() {
 	const { user } = useUser();
@@ -37,7 +37,7 @@ export default function Page() {
 			</View>
 
 			<View>
-				<Uploader />
+				<Photos />
 			</View>
 
 			<TouchableOpacity

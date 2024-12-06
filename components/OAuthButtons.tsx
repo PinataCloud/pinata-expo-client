@@ -40,12 +40,12 @@ export default function OAuthButtons() {
 
 		try {
 			const { createdSessionId, setActive } = await startOAuthFlow({
-				redirectUrl: Linking.createURL("/upload", { scheme: "myapp" }),
+				redirectUrl: Linking.createURL("/photos", { scheme: "myapp" }),
 			});
 
 			if (createdSessionId) {
 				setActive!({ session: createdSessionId });
-				router.push("/upload");
+				router.push("/photos");
 			} else {
 				// Use signIn or signUp for next steps such as MFA
 			}

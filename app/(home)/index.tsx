@@ -8,20 +8,24 @@ export default function Page() {
 
 	return (
 		<View style={styles.container}>
-			<Text style={styles.title}>Pinata Expo</Text>
+			<Text style={styles.title}>Pinata Photo Expo</Text>
 			<Text style={styles.subtitle}>Choose an action to continue</Text>
 
-			<Link href="/sign-in" asChild>
-				<TouchableOpacity style={styles.button}>
-					<Text style={styles.buttonText}>Sign in page</Text>
-				</TouchableOpacity>
-			</Link>
+			{!isSignedIn && (
+				<>
+					<Link href="/sign-in" asChild>
+						<TouchableOpacity style={styles.button}>
+							<Text style={styles.buttonText}>Sign in page</Text>
+						</TouchableOpacity>
+					</Link>
 
-			<Link href="/sign-up" asChild>
-				<TouchableOpacity style={styles.button}>
-					<Text style={styles.buttonText}>Sign up page</Text>
-				</TouchableOpacity>
-			</Link>
+					<Link href="/sign-up" asChild>
+						<TouchableOpacity style={styles.button}>
+							<Text style={styles.buttonText}>Sign up page</Text>
+						</TouchableOpacity>
+					</Link>
+				</>
+			)}
 
 			{isSignedIn ? (
 				<>
@@ -30,9 +34,9 @@ export default function Page() {
 							<Text style={styles.buttonText}>Profile</Text>
 						</TouchableOpacity>
 					</Link>
-					<Link href="/upload" asChild>
+					<Link href="/photos" asChild>
 						<TouchableOpacity style={styles.button}>
-							<Text style={styles.buttonText}>Upload</Text>
+							<Text style={styles.buttonText}>Photos</Text>
 						</TouchableOpacity>
 					</Link>
 				</>
