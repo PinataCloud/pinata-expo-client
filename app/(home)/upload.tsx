@@ -9,6 +9,7 @@ import {
 	Image,
 	ScrollView,
 } from "react-native";
+import { Uploader } from "@/components/Uploader";
 
 export default function Page() {
 	const { user } = useUser();
@@ -33,6 +34,10 @@ export default function Page() {
 			<View style={styles.header}>
 				<Image source={{ uri: user.imageUrl }} style={styles.profileImage} />
 				<Text style={styles.name}>{user.fullName || "User"}</Text>
+			</View>
+
+			<View>
+				<Uploader />
 			</View>
 
 			<TouchableOpacity
