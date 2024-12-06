@@ -28,6 +28,14 @@ export function Photos() {
 	const [refreshing, setRefreshing] = useState(false);
 	const { getToken } = useAuth();
 
+	const serverUrl = process.env.EXPO_PUBLIC_SERVER_URL!;
+
+	if (!serverUrl || serverUrl.length === 0) {
+		throw new Error(
+			"Missing Server URL. Please set EXPO_PUBLIC_CLERK_SERVER_URL in your .env",
+		);
+	}
+
 	const fetchFiles = async () => {
 		try {
 			setLoading(true);

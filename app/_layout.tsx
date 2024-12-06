@@ -25,7 +25,7 @@ export default function RootLayout() {
 
 	const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!;
 
-	if (!publishableKey) {
+	if (!publishableKey || publishableKey.length === 0) {
 		throw new Error(
 			"Missing Publishable Key. Please set EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY in your .env",
 		);
