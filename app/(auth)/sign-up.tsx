@@ -8,7 +8,7 @@ import {
 	ActivityIndicator,
 } from "react-native";
 import { useSignUp, isClerkAPIResponseError } from "@clerk/clerk-expo";
-import { ClerkAPIError } from "@clerk/types";
+import type { ClerkAPIError } from "@clerk/types";
 import { Link, useRouter } from "expo-router";
 import { OtpInput } from "react-native-otp-entry";
 import OAuthButtons from "@/components/OAuthButtons";

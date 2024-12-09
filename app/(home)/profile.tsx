@@ -127,7 +127,12 @@ const styles = StyleSheet.create({
 	},
 	backButton: {
 		alignItems: "center",
-		marginTop: 15,
+		margin: 20,
+		padding: 12,
+		borderRadius: 8,
+		backgroundColor: "white",
+		borderWidth: 1,
+		borderColor: "#e0e0e0",
 	},
 	backButtonText: {
 		color: "black",

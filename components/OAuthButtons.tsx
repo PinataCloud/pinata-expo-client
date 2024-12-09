@@ -3,7 +3,6 @@ import { FontAwesome } from "@expo/vector-icons";
 import * as Linking from "expo-linking";
 import { useRouter } from "expo-router";
 import { useOAuth } from "@clerk/clerk-expo";
-import type { OAuthStrategy } from "@clerk/types";
 
 interface SSOButtonProps {
 	icon: string;
@@ -24,45 +23,33 @@ const SSOButton: React.FC<SSOButtonProps> = ({ icon, text, onPress }) => (
 );
 
 export default function OAuthButtons() {
-	const { startOAuthFlow: startGitHubOAuthFlow } = useOAuth({
+	const { startOAuthFlow } = useOAuth({
 		strategy: "oauth_github",
 	});
 	const router = useRouter();
 
-	async function handleSSO(strategy: OAuthStrategy) {
-		let startOAuthFlow: typeof startGoogleOAuthFlow;
-
-		if (strategy === "oauth_github") {
-			startOAuthFlow = startGitHubOAuthFlow;
-		} else {
-			throw new Error(`Unsupported strategy: ${strategy}`);
-		}
-
+	async function handleSSO() {
 		try {
 			const { createdSessionId, setActive } = await startOAuthFlow({
 				redirectUrl: Linking.createURL("/photos", { scheme: "myapp" }),
 			});
 
+			if (!setActive) {
+				return Error("Invalid Set Active");
+			}
+
 			if (createdSessionId) {
-				setActive!({ session: createdSessionId });
+				setActive({ session: createdSessionId });
 				router.push("/photos");
-			} else {
-				// Use signIn or signUp for next steps such as MFA
 			}
 		} catch (err) {
-			// See https://clerk.com/docs/custom-flows/error-handling
-			// for more info on error handling
 			console.error(JSON.stringify(err, null, 2));
 		}
 	}
 
 	return (
 		<View>
-			<SSOButton
-				icon="github"
-				text="GitHub"
-				onPress={() => handleSSO("oauth_github")}
-			/>
+			<SSOButton icon="github" text="GitHub" onPress={handleSSO} />
 		</View>
 	);
 }
